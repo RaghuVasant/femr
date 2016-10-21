@@ -51,6 +51,7 @@ public class DataModelMapper implements IDataModelMapper{
     private final Provider<IMissionTrip> missionTripProvider;
     private final Provider<IPatient> patientProvider;
     private final Provider<IPatientAgeClassification> patientAgeClassificationProvider;
+
     private final Provider<IPatientEncounterPhoto> patientEncounterPhotoProvider;
     private final Provider<IPatientEncounter> patientEncounterProvider;
     private final Provider<IEncounterService> patientEncounterTabField;
@@ -84,7 +85,7 @@ public class DataModelMapper implements IDataModelMapper{
                            Provider<IMissionTrip> missionTripProvider,
                            Provider<IPatient> patientProvider,
                            Provider<IPatientAgeClassification> patientAgeClassificationProvider,
-                           Provider<IPatientEncounterPhoto> patientEncounterPhotoProvider,
+                             Provider<IPatientEncounterPhoto> patientEncounterPhotoProvider,
                            Provider<IPatientEncounter> patientEncounterProvider,
                            Provider<IEncounterService> patientEncounterTabField,
                            Provider<IPatientEncounterTabField> patientEncounterTabFieldProvider,
@@ -118,6 +119,7 @@ public class DataModelMapper implements IDataModelMapper{
         this.patientProvider = patientProvider;
         this.patientEncounterTabField = patientEncounterTabField;
         this.patientAgeClassificationProvider = patientAgeClassificationProvider;
+
         this.patientEncounterPhotoProvider = patientEncounterPhotoProvider;
         this.patientEncounterTabFieldProvider = patientEncounterTabFieldProvider;
         this.patientEncounterVitalProvider = patientEncounterVitalProvider;
@@ -351,7 +353,7 @@ public class DataModelMapper implements IDataModelMapper{
      * {@inheritDoc}
      */
     @Override
-    public IPatient createPatient(int userID, String firstName, String lastName, Date birthday, String sex, String address, String city, Integer photoID) {
+    public IPatient createPatient(int userID, String firstName, String lastName, Date birthday, Integer isAgeReal, String sex, String address, String city, Integer photoID) {
 
         if (userID < 0 || StringUtils.isNullOrWhiteSpace(firstName) || StringUtils.isNullOrWhiteSpace(lastName)) {
 
@@ -365,6 +367,8 @@ public class DataModelMapper implements IDataModelMapper{
         patient.setLastName(lastName);
         if (birthday != null)
             patient.setAge(birthday);
+        patient.setIsAgeReal(isAgeReal);
+
         patient.setSex(sex);
         patient.setAddress(address);
         patient.setCity(city);
