@@ -57,12 +57,21 @@
                 </div>
 
 
+
+                <div class="generalInfoInput" style="width:445px;">
+                    @inputDate("Birth Date", "age", if(viewModel != null) viewModel.getPatient.getBirth else null)
+                </div>
+
+
+
+
+
+
                 <div id="ageClassificationWrap">
                     <label>Age<span class="red bold">*</span></label>
                     @inputAge("Age", "Years", "years", "Months", "months", if(viewModel != null) viewModel.getPatient else null)
                     <span class="orSpan">OR</span>
-                    @inputDate("Birth Date", "age", if(viewModel != null) viewModel.getPatient.getBirth else null)
-                    <span class="orSpan">OR</span>
+
                     <div class="generalInfoInput">
                         <div id="classificationRadioWrap">
                         @for((key, valyew) <- viewModel.getPossibleAgeClassifications) {
@@ -73,8 +82,29 @@
                     </div>
 
                 </div>
+                <div class="generalInfoInput">
 
-                @inputGender(viewModel)
+                            <label>Birthday Type</label>
+                        @if(viewModel.getPatient.getIsAgeReal == null) {
+
+                <input type="radio" name="isAgeReal" value="0" /> Real
+                <input type="radio" name="isAgeReal" value="1" checked="true"/> Fake
+
+
+            } else{
+                @if(viewModel.getPatient.getIsAgeReal == 0) {
+                    <input type="radio" name="isAgeReal" value="0" checked="true"/> Real
+                    <input type="radio" name="isAgeReal" value="1" /> Fake
+                }  else {''
+
+                    <input type="radio" name="isAgeReal" value="0" /> Real
+                    <input type="radio" name="isAgeReal" value="1" checked="true"/> Fake
+                }
+
+            }
+            </div>
+
+            @inputGender(viewModel)
 
 
                 <div class="generalInfoInput">
