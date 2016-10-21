@@ -18,8 +18,6 @@
 */
 package femr.ui.models.triage;
 
-import femr.common.models.PatientItem;
-
 import java.util.Date;
 
 public class IndexViewModelPost {
@@ -50,6 +48,7 @@ public class IndexViewModelPost {
 
     //multiple chief complaints if they exist
     private String chiefComplaintsJSON;
+    private Integer isAgeReal;
 
     //indicates if the "yes" button was clicked for the diabetes screening prompt
     private String isDiabetesScreenPerformed;
@@ -102,6 +101,17 @@ public class IndexViewModelPost {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public Integer getIsAgeReal() {
+        return isAgeReal;
+    }
+
+    public void setIsAgeReal(Integer isAgeReal) {
+        this.isAgeReal = isAgeReal;
+    }
+
+
+
 
     public Date getAge() {
         return age;
