@@ -83,6 +83,7 @@ public interface IItemModelMapper {
      * @param address            address of the patient, may be null
      * @param userId             id of the user that checked in the patient in triage, not null
      * @param age                age of the patient, may be null
+     * @param isAgeReal
      * @param sex                sex of the patient, may be null
      * @param weeksPregnant      how many weeks pregnant the patient is, may be null
      * @param heightFeet         how tall the patient is, may be null
@@ -100,6 +101,7 @@ public interface IItemModelMapper {
                                   String address,
                                   int userId,
                                   Date age,
+                                  Integer isAgeReal,
                                   String sex,
                                   Integer weeksPregnant,
                                   Integer heightFeet,
