@@ -40,6 +40,8 @@ public class Patient implements IPatient {
     private String lastName;
     @Column(name = "age")
     private Date age;
+    @Column(name = "isAgeReal", nullable = true )
+    private  Integer isAgeReal;
     @Column(name = "sex", nullable = true)
     private String sex;
     @Column(name = "address", nullable = true)
@@ -55,8 +57,8 @@ public class Patient implements IPatient {
     private DateTime isDeleted;
     @Column(name = "deleted_by_user_id", unique = false, nullable = true)
     private Integer deletedByUserId;
-    @Column(name = "reason_deleted", nullable = true)
     private String reasonDeleted;
+
 
 
     @Override
@@ -102,6 +104,16 @@ public class Patient implements IPatient {
     @Override
     public void setAge(Date age) {
         this.age = age;
+    }
+
+
+    public Integer isAgeReal() {
+        return isAgeReal;
+    }
+
+    public void setIsAgeReal(Integer isAgeReal) {
+        this.isAgeReal = isAgeReal;
+
     }
 
     @Override
@@ -184,7 +196,8 @@ public class Patient implements IPatient {
 
     @Override
     public void setReasonDeleted(String reason) { this.reasonDeleted = reason; }
-    
-    
+
+
+
 
 }

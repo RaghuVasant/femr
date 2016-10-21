@@ -161,6 +161,7 @@ public class ItemModelMapper implements IItemModelMapper {
                                                 String address,
                                                 int userId,
                                                 Date age,
+                                                Integer isAgeReal,
                                                 String sex,
                                                 Integer weeksPregnant,
                                                 Integer heightFeet,
@@ -195,6 +196,7 @@ public class ItemModelMapper implements IItemModelMapper {
         if (age != null) {
 
             patientItem.setAge(dateUtils.getAge(age));//age (int)
+            patientItem.setIsAgeReal(isAgeReal);
             patientItem.setBirth(age);//date of birth(date)
             patientItem.setFriendlyDateOfBirth(dateUtils.getFriendlyDate(age));
 

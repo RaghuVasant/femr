@@ -20,7 +20,6 @@ package femr.business.services.system;
 
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.ExpressionList;
-import com.avaje.ebean.FetchConfig;
 import com.avaje.ebean.Query;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -125,6 +124,7 @@ public class SearchService implements ISearchService {
                     savedPatient.getAddress(),
                     savedPatient.getUserId(),
                     savedPatient.getAge(),
+                    savedPatient.isAgeReal(),
                     savedPatient.getSex(),
                     weeksPregnant,
                     patientHeightFeet,
@@ -198,6 +198,7 @@ public class SearchService implements ISearchService {
                     patient.getAddress(),
                     patient.getUserId(),
                     patient.getAge(),
+                    patient.isAgeReal(),
                     patient.getSex(),
                     weeksPregnant,
                     patientHeightFeet,
@@ -532,6 +533,7 @@ public class SearchService implements ISearchService {
                         patient.getAddress(),
                         patient.getUserId(),
                         patient.getAge(),
+                        patient.isAgeReal(),
                         patient.getSex(),
                         null,
                         null,
@@ -639,6 +641,7 @@ public class SearchService implements ISearchService {
                         patient.getAddress(),
                         patient.getUserId(),
                         patient.getAge(),
+                        patient.isAgeReal(),
                         patient.getSex(),
                         null,
                         null,

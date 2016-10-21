@@ -3,7 +3,6 @@ package femr.ui.controllers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.inject.Inject;
-import femr.business.helpers.LogicDoer;
 import femr.business.services.core.*;
 import femr.common.dtos.CurrentUser;
 import femr.common.dtos.ServiceResponse;
@@ -14,7 +13,6 @@ import femr.ui.helpers.security.FEMRAuthenticated;
 import femr.ui.models.triage.*;
 import femr.ui.views.html.triage.index;
 import femr.util.stringhelpers.StringUtils;
-import org.joda.time.DateTime;
 import play.data.Form;
 import play.mvc.*;
 
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Security.Authenticated(FEMRAuthenticated.class)
 @AllowedRoles({Roles.PHYSICIAN, Roles.PHARMACIST, Roles.NURSE})
@@ -291,6 +288,7 @@ public class TriageController extends Controller {
             patient.setBirth(viewModelPost.getAge());
         }
         patient.setSex(viewModelPost.getSex());
+        patient.setIsAgeReal(viewModelPost.getIsAgeReal());
         patient.setAddress(viewModelPost.getAddress());
         patient.setCity(viewModelPost.getCity());
 
