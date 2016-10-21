@@ -3,7 +3,13 @@ $(document).ready(function () {
         var pass = true;
         if (checkReplacementPrescriptions() === false) {
             alert("Duplicate prescriptions can not be submitted.");
-            event.preventDefault();
+             event.preventDefault();
+        }
+
+       if (!  $("input:checkbox[name='disclaimer']") .is(':checked') ){
+
+           alert("Please check the disclaimer that says 'The patient was counseled on the risks and side effects of the medications dispensed.'");
+           event.preventDefault();
         }
 
         return pass;
