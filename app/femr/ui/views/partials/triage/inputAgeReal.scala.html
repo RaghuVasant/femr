@@ -2,7 +2,7 @@
 @import femr.ui.views.html.partials.triage.inputButton
     @inputBlock = {
         <div class="generalInfoInput">
-            <label>Is Age Guessed?</label>
+            <label>Is Age Guessed?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
             <div class="btn-group" id="AgeRealBtns" data-toggle="buttons">
                 @inputButton("No", "isAgeReal", "ageBtn",
                     if(viewModel != null) (viewModel.getPatient.getIsAgeReal) == "" ||  (viewModel.getPatient.getIsAgeReal ) == null else true,
