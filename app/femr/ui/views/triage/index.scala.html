@@ -58,17 +58,14 @@
 
 
 
-                <div class="generalInfoInput" style="width:445px;">
-                    @inputDate("Birth Date", "age", if(viewModel != null) viewModel.getPatient.getBirth else null)
-                </div>
-
-
 
 
 
 
                 <div id="ageClassificationWrap">
                     <label>Age<span class="red bold">*</span></label>
+                     @inputDate("Birth Date", "age", if(viewModel != null) viewModel.getPatient.getBirth else null)
+                    <span class="orSpan">OR</span>
                     @inputAge("Age", "Years", "years", "Months", "months", if(viewModel != null) viewModel.getPatient else null)
                     <span class="orSpan">OR</span>
 
@@ -82,7 +79,7 @@
                     </div>
 
                 </div>
-             
+
             @inputAgeReal(viewModel)
             @inputGender(viewModel)
 
