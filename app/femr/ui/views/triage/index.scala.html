@@ -82,28 +82,8 @@
                     </div>
 
                 </div>
-                <div class="generalInfoInput">
-
-                            <label>Birthday Type</label>
-                        @if(viewModel.getPatient.getIsAgeReal == null) {
-
-                <input type="radio" name="isAgeReal" value="0" /> Real
-                <input type="radio" name="isAgeReal" value="1" checked="true"/> Fake
-
-
-            } else{
-                @if(viewModel.getPatient.getIsAgeReal == 0) {
-                    <input type="radio" name="isAgeReal" value="0" checked="true"/> Real
-                    <input type="radio" name="isAgeReal" value="1" /> Fake
-                }  else {''
-
-                    <input type="radio" name="isAgeReal" value="0" /> Real
-                    <input type="radio" name="isAgeReal" value="1" checked="true"/> Fake
-                }
-
-            }
-            </div>
-
+             
+            @inputAgeReal(viewModel)
             @inputGender(viewModel)
 
 
