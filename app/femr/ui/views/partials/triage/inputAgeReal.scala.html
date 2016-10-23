@@ -1,0 +1,18 @@
+@(viewModel: femr.ui.models.triage.IndexViewModelGet)
+@import femr.ui.views.html.partials.triage.inputButton
+    @inputBlock = {
+        <div class="generalInfoInput">
+            <label>Is Age Guessed?</label>
+            <div class="btn-group" id="AgeRealBtns" data-toggle="buttons">
+                @inputButton("No", "isAgeReal", "ageBtn",
+                    if(viewModel != null) (viewModel.getPatient.getIsAgeReal) == "" ||  (viewModel.getPatient.getIsAgeReal ) == null else true,
+                    if(viewModel != null)  (viewModel.getPatient.getIsAgeReal)== 0 else false,
+                    "0")
+                @inputButton("Yes", "isAgeReal", "ageBtn",
+                    if(viewModel != null)  (viewModel.getPatient.getIsAgeReal ) == "" ||  (viewModel.getPatient.getIsAgeReal ) == null else true,
+                    if(viewModel != null)  (viewModel.getPatient.getIsAgeReal)== 1 else false,
+                    "1")
+            </div>
+        </div>
+    }
+@inputBlock
