@@ -22,18 +22,22 @@ import com.google.gson.Gson;
 import com.google.inject.Inject;
 import femr.business.services.core.IMedicationService;
 import femr.business.services.core.IMissionTripService;
-import femr.common.dtos.ServiceResponse;
-import femr.common.models.*;
-import femr.data.models.mysql.*;
-import femr.ui.models.research.json.ResearchGraphDataModel;
-import femr.common.dtos.CurrentUser;
 import femr.business.services.core.IResearchService;
 import femr.business.services.core.ISessionService;
+import femr.common.dtos.CurrentUser;
+import femr.common.dtos.ServiceResponse;
+import femr.common.models.MissionItem;
+import femr.common.models.ResearchFilterItem;
+import femr.common.models.ResearchResultItem;
+import femr.common.models.ResearchResultSetItem;
+import femr.data.models.mysql.Roles;
 import femr.ui.helpers.security.AllowedRoles;
 import femr.ui.helpers.security.FEMRAuthenticated;
+import femr.ui.models.research.FilterViewModel;
+import femr.ui.models.research.ResearchFilterModel;
+import femr.ui.models.research.json.ResearchGraphDataModel;
 import femr.ui.models.research.json.ResearchItemModel;
 import femr.ui.views.html.research.index;
-import femr.ui.models.research.FilterViewModel;
 import femr.util.stringhelpers.StringUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import play.data.Form;
@@ -41,9 +45,13 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
-import java.io.*;
+import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import static femr.ui.models.research.ResearchFilterModel.createResearchFilterItem;
 
 @Security.Authenticated(FEMRAuthenticated.class)
 @AllowedRoles({Roles.RESEARCHER})
@@ -69,6 +77,7 @@ public class ResearchController extends Controller {
         this.medicationService = medicationService;
         this.sessionService = sessionService;
         this.missionTripService = missionTripService; //Andrew Trip Filter
+
     }
 
     public Result indexGet() {
@@ -100,7 +109,8 @@ public class ResearchController extends Controller {
     public Result indexPost() {
 
         FilterViewModel filterViewModel = FilterViewModelForm.bindFromRequest().get();
-        ResearchFilterItem researchFilterItem = createResearchFilterItem(filterViewModel);
+
+        ResearchFilterItem researchFilterItem = ResearchFilterModel.createResearchFilterItem(filterViewModel);
 
         ServiceResponse<ResearchResultSetItem> response = researchService.retrieveGraphData(researchFilterItem);
         ResearchGraphDataModel graphModel = new ResearchGraphDataModel();
@@ -122,7 +132,7 @@ public class ResearchController extends Controller {
 
         FilterViewModel filterViewModel = FilterViewModelForm.bindFromRequest().get();
 
-        ResearchFilterItem filterItem = createResearchFilterItem(filterViewModel);
+        ResearchFilterItem filterItem = ResearchFilterModel.createResearchFilterItem(filterViewModel) ;
 
         ServiceResponse<File> exportServiceResponse = researchService.retrieveCsvExportFile(filterItem);
         File csvFile = exportServiceResponse.getResponseObject();
@@ -133,48 +143,6 @@ public class ResearchController extends Controller {
         return ok(csvFile);
     }
 
-    /**
-     * Generate and provide an instance of ResearchFilterItem.
-     * Moved from an implementation of IItemModelMapper on 6-10-2015 by Kevin
-     *
-     * @param filterViewModel a viewmodel, not null
-     * @return ResearchFilterItem or null if processing fails
-     */
-    private ResearchFilterItem createResearchFilterItem(FilterViewModel filterViewModel) {
-
-        if (filterViewModel == null) {
-
-            return null;
-        }
-
-        ResearchFilterItem filterItem = new ResearchFilterItem();
-
-        filterItem.setPrimaryDataset(filterViewModel.getPrimaryDataset());
-        filterItem.setSecondaryDataset(filterViewModel.getSecondaryDataset());
-        filterItem.setGraphType(filterViewModel.getGraphType());
-        filterItem.setStartDate(filterViewModel.getStartDate());
-        filterItem.setEndDate(filterViewModel.getEndDate());
-
-        Integer groupFactor = filterViewModel.getGroupFactor();
-        filterItem.setGroupFactor(groupFactor);
-        if (groupFactor != null && groupFactor > 0) {
-
-            filterItem.setGroupPrimary(filterViewModel.isGroupPrimary());
-        } else {
-
-            filterItem.setGroupPrimary(false);
-        }
-
-        filterItem.setFilterRangeStart(filterViewModel.getFilterRangeStart());
-        filterItem.setFilterRangeEnd(filterViewModel.getFilterRangeEnd());
-        filterItem.setMedicationName(filterViewModel.getMedicationName());
-        filterItem.setMissionTripId(filterViewModel.getMissionTripId()); //Andrew Trip Filter
-
-
-
-
-        return filterItem;
-    }
 
     private ResearchGraphDataModel buildGraphModel(ResearchResultSetItem results) {
 
