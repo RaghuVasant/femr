@@ -93,7 +93,7 @@ public interface IItemModelMapper {
      * @param photoId            id of the patients photo, may be null
      * @param ageClassification  age classification of the patient (adult,child, etc), may be null
      * @return a new PatientItem or null if processing fails, may be null
-     */
+     *//*
     PatientItem createPatientItem(int id,
                                   String firstName,
                                   String lastName,
@@ -111,14 +111,14 @@ public interface IItemModelMapper {
                                   Integer photoId,
                                   String ageClassification);
 
-    /**
+    *//**
      * Generate and provide an instance of PatientEncounterItem
      *
      * @param patientEncounter patient encounter info, not null
      * @return a new PatientEncounterItem or null if processing fails
-     */
+     *//*
     PatientEncounterItem createPatientEncounterItem(IPatientEncounter patientEncounter);
-
+*/
     /**
      * Generate and provide an instance of PhotoItem
      *
@@ -145,10 +145,10 @@ public interface IItemModelMapper {
      * @param isCounseled indicates whether or not the pharmacist checked the checkbox indicating that they counseled the patient on this prescription, may be null
      * @return a new PrescriptionItem or null if processing fails
      */
-    PrescriptionItem createPrescriptionItem(int id, String name, String originalMedicationName, String firstName, String lastName,
+   /* PrescriptionItem createPrescriptionItem(int id, String name, String originalMedicationName, String firstName, String lastName,
                                             IConceptPrescriptionAdministration conceptPrescriptionAdministration, Integer amount,
                                             IMedication medication, MedicationInventory medicationInventory, Boolean isCounseled);
-
+*/
     /**
      * Generate and provide an instance of ProblemItem.
      *

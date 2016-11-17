@@ -150,9 +150,9 @@ public class ItemModelMapper implements IItemModelMapper {
         return missionTripItem;
     }
 
-    /**
+  /*  *//**
      * {@inheritDoc}
-     */
+     *//*
     @Override
     public PatientItem createPatientItem(int id,
                                                 String firstName,
@@ -225,9 +225,9 @@ public class ItemModelMapper implements IItemModelMapper {
         return patientItem;
     }
 
-    /**
+    *//**
      * {@inheritDoc}
-     */
+     *//*
     @Override
     public PatientEncounterItem createPatientEncounterItem(IPatientEncounter patientEncounter) {
 
@@ -276,7 +276,7 @@ public class ItemModelMapper implements IItemModelMapper {
         return patientEncounterItem;
 
     }
-
+*/
     /**
      * {@inheritDoc}
      */
@@ -301,7 +301,7 @@ public class ItemModelMapper implements IItemModelMapper {
     /**
      * {@inheritDoc}
      */
-    @Override
+   /* @Override
     public PrescriptionItem createPrescriptionItem(int id, String name, String originalMedicationName, String firstName, String lastName,
                                                    IConceptPrescriptionAdministration medicationAdministration, Integer amount, IMedication medication,
                                                    MedicationInventory medicationInventory, Boolean isCounseled) {
@@ -350,7 +350,7 @@ public class ItemModelMapper implements IItemModelMapper {
         }
         return prescriptionItem;
     }
-
+*/
     /**
      * {@inheritDoc}
      */
