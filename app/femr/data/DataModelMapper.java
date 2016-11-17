@@ -85,7 +85,7 @@ public class DataModelMapper implements IDataModelMapper{
                            Provider<IMissionTrip> missionTripProvider,
                            Provider<IPatient> patientProvider,
                            Provider<IPatientAgeClassification> patientAgeClassificationProvider,
-                             Provider<IPatientEncounterPhoto> patientEncounterPhotoProvider,
+                           Provider<IPatientEncounterPhoto> patientEncounterPhotoProvider,
                            Provider<IPatientEncounter> patientEncounterProvider,
                            Provider<IEncounterService> patientEncounterTabField,
                            Provider<IPatientEncounterTabField> patientEncounterTabFieldProvider,
