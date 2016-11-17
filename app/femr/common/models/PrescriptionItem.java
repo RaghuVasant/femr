@@ -66,9 +66,7 @@ public class PrescriptionItem {
         this.id = id;
     }
 
-    public String getPrescriberFirstName() {
-        return prescriberFirstName;
-    }
+    public String getPrescriberFirstName() { return prescriberFirstName;}
 
     public void setPrescriberFirstName(String prescriberFirstName) {
         this.prescriberFirstName = prescriberFirstName;
